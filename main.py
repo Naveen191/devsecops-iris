@@ -49,7 +49,7 @@ def predict_flower(query_data: QueryIn):
     return output
 
 
-@app.post("/feedback_loop", status_code=200)
+@app.post("/feedback", status_code=200)
 # Route to further train the model based on user input in form of feedback loop
 # Payload: FeedbackIn containing the parameters and correct flower class
 # Response: Dict with detail confirming success (200)

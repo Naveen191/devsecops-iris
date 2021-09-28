@@ -1,7 +1,7 @@
 name: ci-cd
 
 # run the action on pull_requests and pushes
-on: push
+on: [push, pull_request]
 
 jobs:
   # first job to test the application using pytest
@@ -26,10 +26,12 @@ jobs:
     runs-on: ${{ matrix.os }} # choose the OS for running the action
     strategy:
       matrix: 
-        os: ['ubuntu-latest', 'windows-latest']
         python: ['3.7', '3.8', '3.9']
+        os: [ 'windows-latest', 'ubuntu-latest']
+    
     env:
       PYTHON: ${{ matrix.python }}
+
     # define the individual sequential steps to be run
     steps:
       - name: Checkout the repository
